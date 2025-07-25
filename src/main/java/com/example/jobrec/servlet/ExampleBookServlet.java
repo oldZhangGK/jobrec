@@ -14,6 +14,9 @@ public class ExampleBookServlet extends HttpServlet {
 
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("This is the example book servlet");
+        String keyword = request.getParameter("keyword");
+        String category = request.getParameter("category");
+        System.out.println("Keyword: " + keyword);
+        System.out.println("Category: " + category);
     }
 }
