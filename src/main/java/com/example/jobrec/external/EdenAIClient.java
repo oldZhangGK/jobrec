@@ -73,14 +73,14 @@ public class EdenAIClient {
                 return Collections.emptySet();
             }
             JsonNode root = mapper.readTree(entity.getContent()); //get content till nlpcloud's items
-            JsonNode ibm = root.get("ibm");
+            JsonNode amazon = root.get("amazon");
 
-            System.out.println(ibm.asText());
+            System.out.println("root : " + root);
 
-            JsonNode ibmitems = ibm.get("items");
+            JsonNode amazonitems = amazon.get("items");
 
             TreeMap<Double, ArrayList<String>> keywords = new TreeMap<>();
-            Iterator<JsonNode> itemsIterator = ibmitems.elements();
+            Iterator<JsonNode> itemsIterator = amazonitems.elements();
             //Read Value and store in keywords set
             while (itemsIterator.hasNext()) {
                 JsonNode itemNode = itemsIterator.next();

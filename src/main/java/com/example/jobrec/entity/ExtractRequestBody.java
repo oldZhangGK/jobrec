@@ -12,7 +12,7 @@ public class ExtractRequestBody {
 
     public String language = "en";
 
-    public String providers = "ibm";
+    public String providers = "amazon";
 
     @JsonProperty("response_as_dict")
     public boolean responseAsDict = true;
