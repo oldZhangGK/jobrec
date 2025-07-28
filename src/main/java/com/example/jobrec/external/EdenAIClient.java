@@ -20,7 +20,7 @@ import java.io.IOException;
 public class EdenAIClient {
     private static final String API_KEY = System.getenv("EDEN_API_KEY");
 
-    private static final String EDENAI_TOEKN = "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjZlYWU2ZjYtOTBiNy00NDk1LTg2ZmMtMjY0MjU5NzllNDcwIiwidHlwZSI6ImFwaV90b2tlbiJ9.5MUVVHJ-42TYqzU3qhyojSl-ZPF8gx8ZeR4lz9k5Uh0";
+    private static final String EDENAI_TOEKN = "Bearer " + API_KEY;
 
     private static final String EXTRACT_URL = "https://api.edenai.run/v2/text/keyword_extraction";
 
