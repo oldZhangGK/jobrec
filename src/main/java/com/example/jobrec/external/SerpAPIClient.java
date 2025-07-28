@@ -2,8 +2,6 @@ package com.example.jobrec.external;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
-import sun.net.www.http.HttpClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -19,15 +17,17 @@ import java.util.List;
 
 
 public class SerpAPIClient {
-    private static final String URL_TEMPLATE = "https://serpapi.com/search.json?engine=google_jobs&q=%shl=en&api_key=%s";
-    private static final String API_KEY = "c402d66742cd2eba7b29b7cf8905832935bfc8c6178f3ef93d8b38af277e4154";
+    private static final String SerpAPI_KEY = System.getenv("Serp_API_KEY");
+    private static final String URL_TEMPLATE = "https://serpapi.com/search.json?engine=google_jobs&q=%shl=en&api_key=%s&location=%s";
+    private static final String API_KEY = SerpAPI_KEY;
     private static final String DEFAULT_KEYWORD = "developer";
     private static final String DEFAULT_LOCATION = "toronto";
 
     public List<Item> search(String keyword, String location){
         if (keyword ==null){
             keyword = DEFAULT_KEYWORD;
-        } else if(location ==null){
+        }
+        if(location ==null){
             location = DEFAULT_LOCATION;
         }
 
@@ -40,7 +40,7 @@ public class SerpAPIClient {
             e.printStackTrace();
         }
 
-        String url = String.format(URL_TEMPLATE, keyword, location);
+        String url = String.format(URL_TEMPLATE, keyword, API_KEY,location);
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
         //create a custom handler
@@ -49,7 +49,8 @@ public class SerpAPIClient {
                 return Collections.emptyList();
             }
             HttpEntity entity = response.getEntity();
-            if (entity!=null){
+
+            if (entity==null){
                 return Collections.emptyList();
             }
             ObjectMapper mapper = new ObjectMapper();
@@ -62,7 +63,6 @@ public class SerpAPIClient {
         catch (IOException e){
             e.printStackTrace();
         }
-
         return Collections.emptyList();
     }
 }
