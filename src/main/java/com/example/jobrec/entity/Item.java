@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Item {
     private String location;
     private String via;
     private String description;
-    private List<String> job_highlights;
+    private List<String> job_highlights = new ArrayList<>();
     private String url;
     private Set<String> keywords;
     private boolean favorite;
@@ -28,6 +29,8 @@ public class Item {
 
     public Item() {
     }
+
+    public void setJobHighlights(List<String> job_highlights) { this.job_highlights = job_highlights; }
 
     public Item(String id, String title, String company_name, String location, String via, String description, List<String> job_highlights, String url, Set<String> keywords, boolean favorite) {
         this.id = id;

@@ -3,9 +3,9 @@ package com.example.jobrec.db;
 import redis.clients.jedis.Jedis;
 
 public class RedisConnection {
-    private static final String INSTANCE = "YOUR_REDIS_INSTANCE_IP";
+    private static final String INSTANCE = "127.0.0.1";
     private static final int PORT = 6379; //redis default port
-    private static final String PASSWORD = "YOUR_PASSWORD"; // This is the password
+    private static final String PASSWORD = "12345678"; // This is the password
     private static final String SEARCH_KEY_TEMPLATE = "search:lat=%s&lon=%s&keyword=%s";
     private static final String FAVORITE_KEY_TEMPLATE = "history:userId=%s";
 
